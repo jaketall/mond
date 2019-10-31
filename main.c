@@ -9,7 +9,8 @@
 #include <signal.h>
 #include <sys/time.h>
 #include <stdlib.h>
-#import "mond.h"
+#include <sys/wait.h>
+#include "mond.h"
 
 #define LINE_SIZE 1000
 
@@ -57,10 +58,12 @@ void write_system_stats(){
         return;
     }
     fgets(buf, LINE_SIZE, fp);
+    
     token = strtok(buf, s);
+    token = strtok(NULL, s);
     // TODO timestamp
-    printf("System [PROCESS] cpuusermode %d", token[1]);
-
+    printf("System [PROCESS] cpuusermode %s", token);
+    printf("\n");
 }
 
 void write_job_stats() {
@@ -101,5 +104,7 @@ int main(int argc, char *argv[]) {
     // printf(m.filename);
     pid = execute(&m);
     waitpid(pid, &status, 0);
+    return 0;
 }
+
 
