@@ -84,7 +84,7 @@ void write_system_stats(){
         fgets(buf, LINE_SIZE, fp);
         token = strtok(buf, s);
         if (DEBUG)
-            printf("cpu line\n")
+            printf("cpu line\n");
     } while (strcmp(token, "intr"));
 
     token = strtok(NULL, s);
