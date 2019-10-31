@@ -63,6 +63,10 @@ void write_system_stats(){
     token = strtok(NULL, s);
     // TODO timestamp
     printf("System [PROCESS] cpuusermode %s", token);
+
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
+    printf(" cpusystemmode %s", token);
     printf("\n");
 }
 
