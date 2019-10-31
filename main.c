@@ -182,7 +182,7 @@ void write_system_stats(){
 
     fclose(fp);
 
-    fp=fopen("/proc/diskavg", "r");
+    fp=fopen("/proc/diskstats", "r");
     if (fp == NULL) {
         perror("failed to open proc ldavg");
         return;
