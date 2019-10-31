@@ -35,7 +35,7 @@ int execute(Monitor * monitor) {
     if (pid < 0) {
         perror("Fork Failure");
     } else if (pid == 0) {
-        if(execl(monitor->exec, ((char *)NULL)) < 0) {
+        if(execl(monitor->exec, monitor->exec, ((char *)NULL)) < 0) {
             perror("exec fail");
         }
     } else {
