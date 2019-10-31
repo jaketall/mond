@@ -250,6 +250,7 @@ void write_job_stats() {
 
     fgets(buf, LINE_SIZE, fp);
     fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
     token = strtok(buf, s);
     printf("stat %s ", token);
 
