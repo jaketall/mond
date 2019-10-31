@@ -251,60 +251,42 @@ void write_job_stats() {
     token = strtok(NULL, s);
     printf("stat %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
     token = strtok(NULL, s);
     printf("minorfaults %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
+    token = strtok(NULL, s);
     token = strtok(NULL, s);
     printf("majorfaults %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
+    token = strtok(NULL, s);
     token = strtok(NULL, s);
     printf("usermodetime %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
     token = strtok(NULL, s);
     printf("kernelmodetime %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
     token = strtok(NULL, s);
     printf("priority %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
     token = strtok(NULL, s);
     printf("nice %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
     token = strtok(NULL, s);
     printf("nothreads %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
     token = strtok(NULL, s);
     printf("vsize %s ", token);
 
-    fgets(buf, LINE_SIZE, fp);
-    token = strtok(buf, s);
     token = strtok(NULL, s);
     printf("rss %s ", token);
 
