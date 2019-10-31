@@ -228,6 +228,8 @@ void write_job_stats() {
     strcat(filename, sprintf(pid, "%d", pid));
     strcat(filename, "/stat");
 
+    if (DEBUG)
+        printf("openfile\n")
     fp=fopen(filename, "r");
     if (fp == NULL) {
         perror("failed to open proc file ");
