@@ -1,0 +1,13 @@
+Jake Tallman
+Mond
+
+My program seems to be fully functional
+
+Unstable states / race cons :
+
+The most obvious is if you have two monds running writing to the same file. They will overwrite each other. You must
+specify different files for each.
+
+Another would be if the timer went off right as the child died. parent may look for a process file that no longer
+exists.
+
