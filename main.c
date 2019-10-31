@@ -67,6 +67,52 @@ void write_system_stats(){
     token = strtok(NULL, s);
     token = strtok(NULL, s);
     printf(" cpusystemmode %s", token);
+
+    token = strtok(NULL, s);
+    printf(" idletaskrunning %s", token);
+
+    token = strtok(NULL, s);
+    printf(" iowaittime %s", token);
+
+    token = strtok(NULL, s);
+    printf(" irqservicetime %s", token);
+
+    token = strtok(NULL, s);
+    printf(" softirqservicetime %s", token);
+
+    do {
+        fgets(buf, LINE_SIZE, fp);
+        token = strtok(buf, s);
+    } while (strcmp(token, "intr"));
+
+    token = strtok(NULL, s);
+    printf(" intr %s", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" ctxt %s", token);
+
+    fgets(buf, LINE_SIZE, fp); //btime
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" forks %s", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" runnable %s", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" blocked %s", token);
+
+    printf(" [MEMORY]");
+
+
     printf("\n");
 }
 
