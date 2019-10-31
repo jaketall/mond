@@ -115,7 +115,7 @@ void write_system_stats(){
 
     printf(" [MEMORY]"); // ----
 
-    close(fp);
+    fclose(fp);
 
     fp=fopen("/proc/meminfo", "r");
     if (fp == NULL) {
@@ -159,7 +159,7 @@ void write_system_stats(){
 
     printf(" [LOADAVG]"); //-------
 
-    close(fp);
+    fclose(fp);
 
     fp=fopen("/proc/loadavg", "r");
     if (fp == NULL) {
@@ -179,6 +179,8 @@ void write_system_stats(){
     printf(" 15min %s", token);
 
     printf(" [DISKSTATS(sda)]"); //-------
+
+    fclose(fp);
 
     fp=fopen("/proc/diskavg", "r");
     if (fp == NULL) {
