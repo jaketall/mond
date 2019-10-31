@@ -238,7 +238,6 @@ void write_job_stats() {
         return;
     }
 
-    fgets(buf, LINE_SIZE, fp);
     fgets(buf, LINE_SIZE, fp); //pid
     fgets(buf, LINE_SIZE, fp);
 
