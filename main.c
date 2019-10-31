@@ -113,8 +113,20 @@ void write_system_stats(){
     token = strtok(NULL, s);
     printf(" blocked %s", token);
 
-    printf(" [MEMORY]");
+    printf(" [MEMORY]"); // ----
 
+    close(fp);
+
+    fp=fopen("/proc/meminfo", "r");
+    if (fp == NULL) {
+        perror("failed to open proc mem");
+        return;
+    }
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" memtotal %s", token);
 
     printf("\n");
 }
