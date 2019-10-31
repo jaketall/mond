@@ -128,6 +128,89 @@ void write_system_stats(){
     token = strtok(NULL, s);
     printf(" memtotal %s", token);
 
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" memfree %s", token);
+
+
+    fgets(buf, LINE_SIZE, fp); //avail
+    fgets(buf, LINE_SIZE, fp); //buf
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" cached %s", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" swapcached %s", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" active %s", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf(" inactive %s", token);
+
+    printf(" [LOADAVG]"); //-------
+
+    close(fp);
+
+    fp=fopen("/proc/loadavg", "r");
+    if (fp == NULL) {
+        perror("failed to open proc ldavg");
+        return;
+    }
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+
+    printf(" 1min %s", token);
+
+    token = strtok(NULL, s);
+    printf(" 5min %s", token);
+
+    token = strtok(NULL, s);
+    printf(" 15min %s", token);
+
+    printf(" [DISKSTATS(sda)]"); //-------
+
+    fp=fopen("/proc/diskavg", "r");
+    if (fp == NULL) {
+        perror("failed to open proc ldavg");
+        return;
+    }
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    token = strtok(NULL, s);
+
+    token = strtok(NULL, s);
+    printf(" totalnoreads %s", token);
+
+    token = strtok(NULL, s); // merged
+    token = strtok(NULL, s);
+    printf(" totalsectorsread %s", token);
+
+    token = strtok(NULL, s);
+    printf(" nomsread %s", token);
+
+    token = strtok(NULL, s);
+    printf(" totalnowrites %s", token);
+
+    token = strtok(NULL, s); // merged
+    token = strtok(NULL, s);
+    printf(" nosectorswritten %s", token);
+
+    token = strtok(NULL, s);
+    printf(" nomswritten %s", token);
+
     printf("\n");
 }
 
