@@ -230,7 +230,7 @@ void print_time() {
 
     i = 0;
     while ((c = timeinfos[i]) != '\n') {
-        i ++
+        i ++;
     }
     timeinfos[i] = '\0';
     printf ( "[%s]", asctime (timeinfo) );
