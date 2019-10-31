@@ -217,11 +217,25 @@ void write_system_stats(){
     printf("\n");
 }
 
-void write_job_stats() {
+void print_time() {
     time_t rawtime;
     struct tm * timeinfo;
 
+    time ( &rawtime );
+    timeinfo = localtime ( &rawtime );
+    i = 0;
+    while ((c = timeinfo[i]) != '\n') {
+        i ++
+    }
+    timeinfo[i] = '\0';
+    printf ( "[%s]", asctime (timeinfo) );
+
+}
+
+void write_job_stats() {
     char *token;
+    int i;
+    char c;
     char filename[50];
     char pid_s[30];
     char buf[LINE_SIZE];
@@ -242,16 +256,12 @@ void write_job_stats() {
         return;
     }
 
-    time ( &rawtime );
-    timeinfo = localtime ( &rawtime );
-    printf ( "%s", asctime (timeinfo) );
-
     fgets(buf, LINE_SIZE, fp); //pid
     fgets(buf, LINE_SIZE, fp);
 
     token = strtok(buf, s);
     token = strtok(NULL, s);
-
+    print_time();
     printf("Process(%s) [STAT] ", pid_s);
 
     printf("executable (%s) ", token);
