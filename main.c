@@ -216,7 +216,7 @@ void write_system_stats(){
 
 void write_job_stats() {
     char *token;
-    char filename[30];
+    char filename[50];
     char pid[30];
     char buf[LINE_SIZE];
     const char s[10] = " \t\r\n\v\f";
@@ -232,11 +232,7 @@ void write_job_stats() {
     if (fp == NULL) {
         perror("failed to open proc file ");
         return;
-    }
-    fgets(buf, LINE_SIZE, fp);
 
-    token = strtok(buf, s);
-    token = strtok(NULL, s);
 }
 
 // signal handler for timer
