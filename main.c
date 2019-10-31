@@ -47,7 +47,7 @@ void write_system_stats(){
     char *token;
     char buf[LINE_SIZE];
     char output[LINE_SIZE];
-    const char s[2] = " \t\r\n\v\f";
+    const char s[10] = " \t\r\n\v\f";
 
     output[0] = '\0';
 
