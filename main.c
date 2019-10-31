@@ -211,6 +211,8 @@ void write_system_stats(){
     token = strtok(NULL, s);
     printf(" nomswritten %s", token);
 
+    fclose(fp);
+
     printf("\n");
 }
 
@@ -235,6 +237,83 @@ void write_job_stats() {
         perror("failed to open proc file ");
         return;
     }
+
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp); //pid
+    fgets(buf, LINE_SIZE, fp);
+
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+
+    printf("Process(%s) [STAT] ", pid_s);
+
+    printf("executable (%s) ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("stat %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("minorfaults %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("majorfaults %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("usermodetime %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("kernelmodetime %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("priority %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("nice %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("nothreads %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("vsize %s ", token);
+
+    fgets(buf, LINE_SIZE, fp);
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
+    printf("rss %s ", token);
+
+    printf("\n");
+
+
 }
 
 // signal handler for timer
@@ -268,7 +347,6 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    // printf(m.filename);
     pid = execute(&m);
     waitpid(pid, &status, 0);
     return 0;
