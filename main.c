@@ -232,7 +232,7 @@ void write_job_stats() {
     if (fp == NULL) {
         perror("failed to open proc file ");
         return;
-
+    }
 }
 
 // signal handler for timer
