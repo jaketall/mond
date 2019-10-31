@@ -222,14 +222,17 @@ void print_time() {
     struct tm * timeinfo;
     int i;
     char c;
+    char * timeinfos;
 
     time ( &rawtime );
     timeinfo = localtime ( &rawtime );
+    timeinfos = asctime (timeinfo);
+
     i = 0;
-    while ((c = timeinfo[i]) != '\n') {
+    while ((c = timeinfos[i]) != '\n') {
         i ++
     }
-    timeinfo[i] = '\0';
+    timeinfos[i] = '\0';
     printf ( "[%s]", asctime (timeinfo) );
 
 }
