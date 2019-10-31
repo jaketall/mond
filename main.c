@@ -233,7 +233,7 @@ void print_time() {
         i ++;
     }
     timeinfos[i] = '\0';
-    printf ( "[%s]", asctime (timeinfo) );
+    printf ( "[%s]", timeinfos);
 
 }
 
