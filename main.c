@@ -222,6 +222,7 @@ void write_job_stats() {
     const char s[10] = " \t\r\n\v\f";
     FILE *fp;
 
+    filename[0] = '\0';
     strcat(filename, "/proc/");
     sprintf(pid_s, "%d", pid);
     strcat(filename, pid_s);
