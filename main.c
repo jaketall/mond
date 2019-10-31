@@ -15,6 +15,7 @@
 #define LINE_SIZE 1000
 
 Monitor m; // global
+int pid;
 
 void parse_args(Monitor * monitor, int argc, char *argv[]) {
     monitor -> sys_mon = 0;
@@ -27,7 +28,6 @@ void parse_args(Monitor * monitor, int argc, char *argv[]) {
 }
 
 int execute(Monitor * monitor) {
-    int pid;
 
     pid = fork();
     if (pid < 0) {
@@ -46,10 +46,7 @@ int execute(Monitor * monitor) {
 void write_system_stats(){
     char *token;
     char buf[LINE_SIZE];
-    char output[LINE_SIZE];
     const char s[10] = " \t\r\n\v\f";
-
-    output[0] = '\0';
 
     FILE *fp;
     fp=fopen("/proc/stat", "r");
@@ -218,7 +215,28 @@ void write_system_stats(){
 }
 
 void write_job_stats() {
+    char *token;
+    char filename[30];
+    char pid[30];
+    char buf[LINE_SIZE];
+    const char s[10] = " \t\r\n\v\f";
+    FILE *fp;
 
+    filename[0] = '\0';
+
+    strcat(filename, "/proc/");
+    strcat(filename, sprintf(pid, "%d", pid));
+    strcat(filename, "/stat");
+
+    fp=fopen(filename, "r");
+    if (fp == NULL) {
+        perror("failed to open proc file ");
+        return;
+    }
+    fgets(buf, LINE_SIZE, fp);
+
+    token = strtok(buf, s);
+    token = strtok(NULL, s);
 }
 
 // signal handler for timer
