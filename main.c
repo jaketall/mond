@@ -47,7 +47,7 @@ void write_system_stats(){
     char *token;
     char buf[LINE_SIZE];
     char output[LINE_SIZE];
-    const char s[2] = " ";
+    const char s[2] = " \t\r\n\v\f";
 
     output[0] = '\0';
 
@@ -91,8 +91,6 @@ void write_system_stats(){
     do {
         fgets(buf, LINE_SIZE, fp);
         token = strtok(buf, s);
-        if (DEBUG)
-            printf("cpu line\n");
     } while (strcmp(token, "ctxt"));
 
     token = strtok(NULL, s);
