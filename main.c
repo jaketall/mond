@@ -227,7 +227,7 @@ void write_job_stats() {
     strcat(filename, "/stat");
 
     if (DEBUG)
-        printf("openfile\n")
+        printf("openfile\n");
     fp=fopen(filename, "r");
     if (fp == NULL) {
         perror("failed to open proc file ");
