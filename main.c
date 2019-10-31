@@ -220,6 +220,8 @@ void write_system_stats(){
 void print_time() {
     time_t rawtime;
     struct tm * timeinfo;
+    int i;
+    char c;
 
     time ( &rawtime );
     timeinfo = localtime ( &rawtime );
@@ -234,8 +236,6 @@ void print_time() {
 
 void write_job_stats() {
     char *token;
-    int i;
-    char c;
     char filename[50];
     char pid_s[30];
     char buf[LINE_SIZE];
