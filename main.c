@@ -290,8 +290,38 @@ void write_job_stats() {
     token = strtok(NULL, s);
     printf("rss %s ", token);
 
-    printf("\n");
+    fclose(fp);
 
+    strcat(filename, "m");
+    if (DEBUG)
+        printf("openfile %s\n", filename);
+    fp=fopen(filename, "r");
+    if (fp == NULL) {
+        perror("failed to open proc file ");
+        return;
+    }
+
+    fgets(buf, LINE_SIZE, fp);
+
+    token = strtok(buf, s);
+    printf("[STATM] ");
+    printf("program %s ", token);
+
+    token = strtok(NULL, s);
+    printf("residentset %s ", token);
+
+    token = strtok(NULL, s);
+    printf("share %s ", token);
+
+    token = strtok(NULL, s);
+    printf("text %s ", token);
+
+    token = strtok(NULL, s);
+
+    token = strtok(NULL, s);
+    printf("data %s", token);
+
+    printf("\n");
 
 }
 
