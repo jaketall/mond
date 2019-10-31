@@ -242,7 +242,7 @@ void write_job_stats() {
     fgets(buf, LINE_SIZE, fp);
 
     token = strtok(buf, s);
-    token = strtok(NULL, s);
+
 
     printf("Process(%s) [STAT] ", pid_s);
 
