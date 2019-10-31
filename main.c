@@ -368,6 +368,8 @@ int main(int argc, char *argv[]) {
     parse_args(&m, argc, argv);
 
     out_fp = fopen(m.filename, "w");
+    dup2(out_fp, STDOUT_FILENO);
+
     // for catching timer sig
     if (signal(SIGALRM, (void (*)(int)) wake_up) == SIG_ERR) {
         perror("Unable to catch SIGALRM");
