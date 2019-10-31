@@ -188,6 +188,7 @@ void write_system_stats(){
         return;
     }
 
+    fgets(buf, LINE_SIZE, fp); // fd0
     fgets(buf, LINE_SIZE, fp);
     token = strtok(buf, s);
     token = strtok(NULL, s);
