@@ -5,7 +5,7 @@
 #ifndef MOND_MOND_H
 #define MOND_MOND_H
 
-#define DEBUG 1
+#define DEBUG 0
 
 typedef struct monitor_s {
     int sys_mon;
