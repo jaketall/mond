@@ -10,6 +10,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <time.h>
 #include "mond.h"
 
 #define LINE_SIZE 1000
@@ -217,6 +218,9 @@ void write_system_stats(){
 }
 
 void write_job_stats() {
+    time_t rawtime;
+    struct tm * timeinfo;
+
     char *token;
     char filename[50];
     char pid_s[30];
@@ -237,6 +241,10 @@ void write_job_stats() {
         perror("failed to open proc file ");
         return;
     }
+
+    time ( &rawtime );
+    timeinfo = localtime ( &rawtime );
+    printf ( "%s", asctime (timeinfo) );
 
     fgets(buf, LINE_SIZE, fp); //pid
     fgets(buf, LINE_SIZE, fp);
