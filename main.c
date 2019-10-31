@@ -44,6 +44,26 @@ int execute(Monitor * monitor) {
     return 0;
 }
 
+void print_time() {
+    time_t rawtime;
+    struct tm * timeinfo;
+    int i;
+    char c;
+    char * timeinfos;
+
+    time ( &rawtime );
+    timeinfo = localtime ( &rawtime );
+    timeinfos = asctime (timeinfo);
+
+    i = 0;
+    while ((c = timeinfos[i]) != '\n') {
+        i ++;
+    }
+    timeinfos[i] = '\0';
+    printf ( "[%s] ", timeinfos);
+
+}
+
 void write_system_stats(){
     char *token;
     char buf[LINE_SIZE];
@@ -59,7 +79,8 @@ void write_system_stats(){
     
     token = strtok(buf, s);
     token = strtok(NULL, s);
-    // TODO timestamp
+
+    print_time();
     printf("System [PROCESS] cpuusermode %s", token);
 
     token = strtok(NULL, s);
@@ -215,26 +236,6 @@ void write_system_stats(){
     fclose(fp);
 
     printf("\n");
-}
-
-void print_time() {
-    time_t rawtime;
-    struct tm * timeinfo;
-    int i;
-    char c;
-    char * timeinfos;
-
-    time ( &rawtime );
-    timeinfo = localtime ( &rawtime );
-    timeinfos = asctime (timeinfo);
-
-    i = 0;
-    while ((c = timeinfos[i]) != '\n') {
-        i ++;
-    }
-    timeinfos[i] = '\0';
-    printf ( "[%s]", timeinfos);
-
 }
 
 void write_job_stats() {
