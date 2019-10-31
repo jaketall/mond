@@ -223,7 +223,7 @@ void write_job_stats() {
     FILE *fp;
 
     strcat(filename, "/proc/");
-    sprintf(pid_s, "%d", pid)
+    sprintf(pid_s, "%d", pid);
     strcat(filename, pid);
     strcat(filename, "/stat");
 
