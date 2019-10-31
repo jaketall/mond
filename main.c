@@ -217,13 +217,14 @@ void write_system_stats(){
 void write_job_stats() {
     char *token;
     char filename[50];
-    char pid[30];
+    char pid_s[30];
     char buf[LINE_SIZE];
     const char s[10] = " \t\r\n\v\f";
     FILE *fp;
 
     strcat(filename, "/proc/");
-    strcat(filename, sprintf(pid, "%d", pid));
+    sprintf(pid_s, "%d", pid)
+    strcat(filename, pid);
     strcat(filename, "/stat");
 
     if (DEBUG)
