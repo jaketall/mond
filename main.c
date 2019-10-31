@@ -17,6 +17,7 @@
 
 Monitor m; // global
 int pid;
+FILE * out_fp;
 
 void parse_args(Monitor * monitor, int argc, char *argv[]) {
     monitor -> sys_mon = 0;
@@ -343,6 +344,8 @@ void write_job_stats() {
     token = strtok(NULL, s);
     printf("data %s", token);
 
+    fclose (fp);
+
     printf("\n");
 
 }
@@ -364,6 +367,7 @@ int main(int argc, char *argv[]) {
 
     parse_args(&m, argc, argv);
 
+    out_fp = fopen(m.filename, "w");
     // for catching timer sig
     if (signal(SIGALRM, (void (*)(int)) wake_up) == SIG_ERR) {
         perror("Unable to catch SIGALRM");
